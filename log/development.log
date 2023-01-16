@@ -31,3 +31,327 @@ Migrating to CreateOrders (20230115131805)
   [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 172.27.0.1 at 2023-01-16 09:56:55 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (4.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.7ms | Allocations: 538)
+Completed 200 OK in 65ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 3727)
+
+
+Started GET "/" for 172.27.0.1 at 2023-01-16 10:47:54 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.1ms | Allocations: 538)
+Completed 200 OK in 67ms (Views: 13.1ms | ActiveRecord: 0.0ms | Allocations: 3727)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 10:50:38 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 20.1ms | Allocations: 1956)
+  Rendered layout layouts/application.html.erb (Duration: 23.1ms | Allocations: 2063)
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 11.9ms | Allocations: 7384)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container mt-3 mb-5">
+  <h1 class="text-center mb-5">注文フォーム</h1>
+
+  <%= form_for @order, confirm_orders_path, do |f| %>
+  <% end %>
+</div>
+):
+1:    <div class="container mt-3 mb-5">
+2:      <h1 class="text-center mb-5">注文フォーム</h1>
+3:    
+4:      <%= form_for @order, confirm_orders_path, do |f| %>
+5:      <% end %>
+6:    </div>
+  
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:8: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:8: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:8: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:8: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:8: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:8: syntax error, unexpected `end', expecting end-of-input
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 10:50:55 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1217)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 1312)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 2203)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container mt-3 mb-5">
+  <h1 class="text-center mb-5">注文フォーム</h1>
+
+  <!-- <%= form_for @order, confirm_orders_path, do |f| %>
+
+  <% end %> -->
+</div>
+):
+1:    <div class="container mt-3 mb-5">
+2:      <h1 class="text-center mb-5">注文フォーム</h1>
+3:    
+4:      <!-- <%= form_for @order, confirm_orders_path, do |f| %>
+5:    
+6:      <% end %> -->
+7:    </div>
+  
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:9: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:9: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:9: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:9: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:9: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:9: syntax error, unexpected `end', expecting end-of-input
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 10:53:02 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 148)
+  Rendered layout layouts/application.html.erb (Duration: 2251.5ms | Allocations: 73067)
+Completed 200 OK in 2260ms (Views: 2255.7ms | ActiveRecord: 0.0ms | Allocations: 73988)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:02:44 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1265)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 1360)
+Completed 500 Internal Server Error in 22ms (Allocations: 2240)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container mt-3 mb-5">
+  <h1 class="text-center mb-5">注文フォーム</h1>
+
+  <%= form_for @order, confirm_orders_path, do |f| %>
+    <div class="col-md-6 mx-auto mb-5">
+      <div class="mb-3">
+        <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %>
+        <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-controll' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+):
+1:    <div class="container mt-3 mb-5">
+2:      <h1 class="text-center mb-5">注文フォーム</h1>
+3:    
+4:      <%= form_for @order, confirm_orders_path, do |f| %>
+5:        <div class="col-md-6 mx-auto mb-5">
+6:          <div class="mb-3">
+7:            <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %>
+8:            <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-controll' %>
+9:          </div>
+10:        </div>
+11:      <% end %>
+12:    </div>
+  
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:03:50 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1262)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 1358)
+Completed 500 Internal Server Error in 18ms (Allocations: 2253)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container mt-3 mb-5">
+  <h1 class="text-center mb-5">注文フォーム</h1>
+
+  <%= form_for @order, url: confirm_orders_path, do |f| %>
+    <div class="col-md-6 mx-auto mb-5">
+      <div class="mb-3">
+        <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %>
+        <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-controll' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+):
+1:    <div class="container mt-3 mb-5">
+2:      <h1 class="text-center mb-5">注文フォーム</h1>
+3:    
+4:      <%= form_for @order, url: confirm_orders_path, do |f| %>
+5:        <div class="col-md-6 mx-auto mb-5">
+6:          <div class="mb-3">
+7:            <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %>
+8:            <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-controll' %>
+9:          </div>
+10:        </div>
+11:      <% end %>
+12:    </div>
+  
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+app/views/orders/new.html.erb:4: syntax error, unexpected `do' for block
+app/views/orders/new.html.erb:15: syntax error, unexpected `end', expecting end-of-input
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:04:14 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 3074.9ms | Allocations: 167089)
+  Rendered layout layouts/application.html.erb (Duration: 3094.9ms | Allocations: 168494)
+Completed 200 OK in 3104ms (Views: 3099.4ms | Allocations: 169401)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:42:01 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1243)
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 2587)
+Completed 200 OK in 35ms (Views: 30.1ms | Allocations: 3473)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:44:02 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 466.5ms | Allocations: 22616)
+  Rendered layout layouts/application.html.erb (Duration: 479.8ms | Allocations: 23789)
+Completed 200 OK in 509ms (Views: 483.6ms | ActiveRecord: 2.6ms | Allocations: 26998)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:44:42 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 316.6ms | Allocations: 22482)
+  Rendered layout layouts/application.html.erb (Duration: 330.7ms | Allocations: 23647)
+Completed 200 OK in 379ms (Views: 334.5ms | ActiveRecord: 15.9ms | Allocations: 27179)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:44:47 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 819)
+  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 1827)
+Completed 200 OK in 20ms (Views: 17.5ms | ActiveRecord: 0.0ms | Allocations: 2128)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:44:48 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 798)
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 1806)
+Completed 200 OK in 24ms (Views: 20.4ms | ActiveRecord: 0.0ms | Allocations: 2102)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:44:49 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 792)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 1800)
+Completed 200 OK in 24ms (Views: 20.6ms | ActiveRecord: 0.0ms | Allocations: 2096)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:44:56 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 813)
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 1829)
+Completed 200 OK in 27ms (Views: 23.8ms | ActiveRecord: 0.0ms | Allocations: 2125)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:45:22 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 260.0ms | Allocations: 22691)
+  Rendered layout layouts/application.html.erb (Duration: 275.2ms | Allocations: 23864)
+Completed 200 OK in 328ms (Views: 279.8ms | ActiveRecord: 18.2ms | Allocations: 27398)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:45:24 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 791)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 1799)
+Completed 200 OK in 25ms (Views: 21.3ms | ActiveRecord: 0.0ms | Allocations: 2100)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 11:46:22 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 284.8ms | Allocations: 22523)
+  Rendered layout layouts/application.html.erb (Duration: 298.6ms | Allocations: 23688)
+Completed 200 OK in 339ms (Views: 302.3ms | ActiveRecord: 14.8ms | Allocations: 27211)
+
+
