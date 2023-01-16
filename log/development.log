@@ -534,3 +534,77 @@ Processing by OrdersController#create as HTML
 Completed 200 OK in 93ms (Views: 25.3ms | ActiveRecord: 41.0ms | Allocations: 5031)
 
 
+Started POST "/orders" for 172.27.0.1 at 2023-01-16 12:24:59 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  [1m[36mOrder Create (23.2ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "makise"], ["created_at", "2023-01-16 12:24:59.817752"], ["updated_at", "2023-01-16 12:24:59.817752"]]
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/create.html.erb within layouts/application
+  Rendered orders/create.html.erb within layouts/application (Duration: 0.6ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 19.1ms | Allocations: 1019)
+Completed 200 OK in 79ms (Views: 24.7ms | ActiveRecord: 33.7ms | Allocations: 3480)
+
+
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 12:31:52 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1337)
+  Rendered layout layouts/application.html.erb (Duration: 30.2ms | Allocations: 2682)
+Completed 200 OK in 70ms (Views: 36.8ms | ActiveRecord: 4.0ms | Allocations: 6129)
+
+
+Started POST "/orders/confirm" for 172.27.0.1 at 2023-01-16 12:31:57 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"ami"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 5.2ms | Allocations: 616)
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 1617)
+Completed 200 OK in 31ms (Views: 25.3ms | ActiveRecord: 0.0ms | Allocations: 2415)
+
+
+Started POST "/orders" for 172.27.0.1 at 2023-01-16 12:31:58 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"ami"}, "button"=>""}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  [1m[36mOrder Create (19.2ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "ami"], ["created_at", "2023-01-16 12:31:58.688464"], ["updated_at", "2023-01-16 12:31:58.688464"]]
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 53ms (ActiveRecord: 30.0ms | Allocations: 2617)
+
+
+Started GET "/orders/complete" for 172.27.0.1 at 2023-01-16 12:31:58 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 4.8ms | Allocations: 129)
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 1438)
+Completed 200 OK in 26ms (Views: 23.3ms | ActiveRecord: 0.0ms | Allocations: 1720)
+
+
+Started GET "/orders/complete" for 172.27.0.1 at 2023-01-16 12:32:12 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 0.3ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 1308)
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 0.0ms | Allocations: 1589)
+
+

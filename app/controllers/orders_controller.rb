@@ -9,7 +9,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
+    return redirect_to complete_orders_url if @order.save
+
+    render :confirm
   end
 
   private
