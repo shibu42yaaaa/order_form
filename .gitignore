@@ -1,2 +1,5 @@
 tmp/cache/assets/
 tmp/cache/bootsnap/compile-cache-iseq/
+log/
+tmp/cache/bootsnap/compile-cache-iseq/
+tmp/pids/

@@ -402,3 +402,135 @@ Processing by OrdersController#confirm as HTML
 Completed 200 OK in 37ms (Views: 29.7ms | Allocations: 3464)
 
 
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 12:16:59 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1283)
+  Rendered layout layouts/application.html.erb (Duration: 28.0ms | Allocations: 2627)
+Completed 200 OK in 40ms (Views: 34.1ms | Allocations: 3510)
+
+
+Started POST "/orders/confirm" for 172.27.0.1 at 2023-01-16 12:17:03 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 5.5ms | Allocations: 676)
+  Rendered layout layouts/application.html.erb (Duration: 23.9ms | Allocations: 1676)
+Completed 200 OK in 34ms (Views: 28.3ms | Allocations: 2445)
+
+
+Started POST "/orders" for 172.27.0.1 at 2023-01-16 12:17:09 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+Completed 500 Internal Server Error in 25ms (Allocations: 3739)
+
+
+  
+NameError (undefined local variable or method `order' for #<OrdersController:0x0000000001b328>
+
+    order.save
+    ^^^^^
+Did you mean?  @order):
+  
+app/controllers/orders_controller.rb:12:in `create'
+Started POST "/orders" for 172.27.0.1 at 2023-01-16 12:17:55 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+Completed 500 Internal Server Error in 22ms (Allocations: 4007)
+
+
+  
+NameError (undefined local variable or method `order' for #<OrdersController:0x0000000001b508>
+
+    order.save
+    ^^^^^
+Did you mean?  @order):
+  
+app/controllers/orders_controller.rb:12:in `create'
+Started GET "/orders/mew" for 172.27.0.1 at 2023-01-16 12:18:32 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/orders/mew"):
+  
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 12:18:40 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1191)
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | Allocations: 2532)
+Completed 200 OK in 32ms (Views: 27.9ms | Allocations: 3108)
+
+
+Started POST "/orders/confirm" for 172.27.0.1 at 2023-01-16 12:18:44 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 4.7ms | Allocations: 619)
+  Rendered layout layouts/application.html.erb (Duration: 19.7ms | Allocations: 1619)
+Completed 200 OK in 28ms (Views: 22.9ms | Allocations: 2377)
+
+
+Started POST "/orders" for 172.27.0.1 at 2023-01-16 12:18:48 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+Completed 500 Internal Server Error in 16ms (Allocations: 3713)
+
+
+  
+NameError (undefined local variable or method `order' for #<OrdersController:0x0000000001b8c8>
+
+    order.save
+    ^^^^^
+Did you mean?  @order):
+  
+app/controllers/orders_controller.rb:12:in `create'
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 12:19:42 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 846.3ms | Allocations: 34899)
+  Rendered layout layouts/application.html.erb (Duration: 1288.3ms | Allocations: 55667)
+Completed 200 OK in 1393ms (Views: 1305.1ms | ActiveRecord: 12.7ms | Allocations: 63184)
+
+
+Started POST "/orders/confirm" for 172.27.0.1 at 2023-01-16 12:19:48 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 16.8ms | Allocations: 862)
+  Rendered layout layouts/application.html.erb (Duration: 33.5ms | Allocations: 1981)
+Completed 200 OK in 45ms (Views: 38.4ms | ActiveRecord: 0.0ms | Allocations: 3048)
+
+
+Started POST "/orders" for 172.27.0.1 at 2023-01-16 12:19:49 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"makise"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  [1m[36mOrder Create (26.0ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "makise"], ["created_at", "2023-01-16 12:19:49.745883"], ["updated_at", "2023-01-16 12:19:49.745883"]]
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (14.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:12:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/create.html.erb within layouts/application
+  Rendered orders/create.html.erb within layouts/application (Duration: 4.2ms | Allocations: 156)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 1159)
+Completed 200 OK in 93ms (Views: 25.3ms | ActiveRecord: 41.0ms | Allocations: 5031)
+
+
