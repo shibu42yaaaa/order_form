@@ -355,3 +355,50 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 339ms (Views: 302.3ms | ActiveRecord: 14.8ms | Allocations: 27211)
 
 
+Started GET "/orders/new" for 172.27.0.1 at 2023-01-16 12:03:50 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1287)
+  Rendered layout layouts/application.html.erb (Duration: 32.9ms | Allocations: 2631)
+Completed 200 OK in 45ms (Views: 38.2ms | Allocations: 3514)
+
+
+Started POST "/orders/confirm" for 172.27.0.1 at 2023-01-16 12:04:12 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Underworld"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 23.2ms | Allocations: 1000)
+  Rendered layout layouts/application.html.erb (Duration: 34.8ms | Allocations: 2126)
+Completed 200 OK in 44ms (Views: 39.7ms | Allocations: 3153)
+
+
+Started POST "/orders" for 172.27.0.1 at 2023-01-16 12:04:14 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Underworld"}, "button"=>""}
+Completed 500 Internal Server Error in 17ms (Allocations: 3902)
+
+
+  
+NameError (undefined local variable or method `order' for #<OrdersController:0x0000000001af90>
+
+    order.save
+    ^^^^^
+Did you mean?  @order):
+  
+app/controllers/orders_controller.rb:12:in `create'
+Started POST "/orders/confirm" for 172.27.0.1 at 2023-01-16 12:05:07 +0900
+Cannot render console from 172.27.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"Underworld"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 5.8ms | Allocations: 829)
+  Rendered layout layouts/application.html.erb (Duration: 24.8ms | Allocations: 2173)
+Completed 200 OK in 37ms (Views: 29.7ms | Allocations: 3464)
+
+
