@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    return render :new if params[:button] == 'back'
     return redirect_to complete_orders_url if @order.save
 
     render :confirm
