@@ -1,0 +1,44 @@
+<div class="container mt-3 mb-5">
+  <h1 class="text-center mb-5">注文内容確認</h1>
+
+  <div class="col-md-6 mx-auto mb5">
+    <p>以下の内容でよろしいでしょうか？</p>
+    <div class="mb-b">
+      <div class="form-label border-start border-primary border-4 ps-1">
+        <%= t('activerecord.attributes.order.name') %>
+      </div>
+      <%= @order.name %>
+    </div>
+    <div class="mb-b">
+      <div class="form-label border-start border-primary border-4 ps-1">
+        <%= t('activerecord.attributes.order.email') %>
+      </div>
+      <%= @order.email %>
+    </div>
+    <div class="mb-b">
+      <div class="form-label border-start border-primary border-4 ps-1">
+        <%= t('activerecord.attributes.order.telephone') %>
+      </div>
+      <%= @order.telephone %>
+    </div>
+    <div class="mb-b">
+      <div class="form-label border-start border-primary border-4 ps-1">
+        <%= t('activerecord.attributes.order.delivery_address') %>
+      </div>
+      <%= @order.delivery_address %>
+    </div>
+  </div>
+
+  <%= form_for @order, url: orders_path do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :email %>
+    <%= f.hidden_field :telephone %>
+    <%= f.hidden_field :delivery_address %>
+      <div class="d-grid col-md-6 mx-auto">
+        <%= f.button 'OK', class: 'btn btn-lg btn-primary mb-3' %>
+      </div>
+      <div class="d-grid col-md-6 mx-auto">
+        <%= f.button '戻る', value: 'back', class: 'btn btn-lg btn-secondary' %>
+      </div>
+  <% end %>
+</div>
