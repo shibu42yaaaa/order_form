@@ -1294,3 +1294,124 @@ Processing by OrdersController#complete as HTML
 Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms | Allocations: 1930)
 
 
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-18 20:47:57 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 8.7ms | Allocations: 2402)
+  Rendered layout layouts/application.html.erb (Duration: 36.8ms | Allocations: 3756)
+Completed 200 OK in 91ms (Views: 42.4ms | ActiveRecord: 2.8ms | Allocations: 7779)
+
+
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-18 20:48:41 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"aiko", "email"=>"aiko@sample.com", "telephone"=>"09011111111", "delivery_address"=>"神奈川県横浜市西区"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1147)
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 2147)
+Completed 200 OK in 27ms (Views: 22.9ms | ActiveRecord: 0.0ms | Allocations: 3195)
+
+
+Started POST "/orders" for 192.168.96.1 at 2023-01-18 20:48:44 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"aiko", "email"=>"aiko@sample.com", "telephone"=>"09011111111", "delivery_address"=>"神奈川県横浜市西区"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:14:in `create'
+  [1m[36mOrder Create (13.0ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at", "email", "telephone", "delivery_address") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "aiko"], ["created_at", "2023-01-18 20:48:44.461537"], ["updated_at", "2023-01-18 20:48:44.461537"], ["email", "aiko@sample.com"], ["telephone", "09011111111"], ["delivery_address", "神奈川県横浜市西区"]]
+  ↳ app/controllers/orders_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:14:in `create'
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 43ms (ActiveRecord: 22.9ms | Allocations: 2853)
+
+
+Started GET "/orders/complete" for 192.168.96.1 at 2023-01-18 20:48:44 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (5.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:22:in `complete'
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 5.5ms | Allocations: 12944)
+
+
+  
+NameError (undefined local variable or method `order' for #<OrdersController:0x00000000013560>
+
+    return redirect_to new_order_url if order.blank?
+                                        ^^^^^
+Did you mean?  @order):
+  
+app/controllers/orders_controller.rb:23:in `complete'
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-18 20:49:36 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2050)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 3225)
+Completed 200 OK in 51ms (Views: 21.1ms | ActiveRecord: 11.1ms | Allocations: 7408)
+
+
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-18 20:50:23 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"バトー", "email"=>"bbb@sample.com", "telephone"=>"09011112222", "delivery_address"=>"公安9"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 2.5ms | Allocations: 736)
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 1737)
+Completed 200 OK in 24ms (Views: 19.8ms | ActiveRecord: 0.0ms | Allocations: 2727)
+
+
+Started POST "/orders" for 192.168.96.1 at 2023-01-18 20:50:25 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"バトー", "email"=>"bbb@sample.com", "telephone"=>"09011112222", "delivery_address"=>"公安9"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:14:in `create'
+  [1m[36mOrder Create (10.4ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at", "email", "telephone", "delivery_address") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "バトー"], ["created_at", "2023-01-18 20:50:25.807371"], ["updated_at", "2023-01-18 20:50:25.807371"], ["email", "bbb@sample.com"], ["telephone", "09011112222"], ["delivery_address", "公安9"]]
+  ↳ app/controllers/orders_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:14:in `create'
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 37ms (ActiveRecord: 17.3ms | Allocations: 2832)
+
+
+Started GET "/orders/complete" for 192.168.96.1 at 2023-01-18 20:50:25 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (4.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:22:in `complete'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 3.2ms | Allocations: 185)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 1194)
+Completed 200 OK in 28ms (Views: 16.3ms | ActiveRecord: 4.2ms | Allocations: 3331)
+
+
+Started GET "/orders/complete" for 192.168.96.1 at 2023-01-18 20:50:29 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (2.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:22:in `complete'
+Redirected to http://localhost:3000/orders/new
+Completed 302 Found in 11ms (ActiveRecord: 2.6ms | Allocations: 1367)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-18 20:50:29 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1779)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 2787)
+Completed 200 OK in 19ms (Views: 16.7ms | ActiveRecord: 0.0ms | Allocations: 3086)
+
+
