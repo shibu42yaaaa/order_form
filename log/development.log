@@ -1235,3 +1235,62 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 933ms (Views: 866.4ms | ActiveRecord: 9.7ms | Allocations: 65918)
 
 
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-18 16:56:41 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"yama", "email"=>"yama@sample.com", "telephone"=>"0311112222", "delivery_address"=>"神奈川県横浜市"}, "button"=>""}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:7:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1494)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 2876)
+Completed 200 OK in 43ms (Views: 24.0ms | ActiveRecord: 2.0ms | Allocations: 7717)
+
+
+Started POST "/orders" for 192.168.96.1 at 2023-01-18 16:57:16 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"yama", "email"=>"yama@sample.com", "telephone"=>"0311112222", "delivery_address"=>"神奈川県横浜市"}, "button"=>"back"}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1705)
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 2706)
+Completed 200 OK in 24ms (Views: 20.5ms | ActiveRecord: 0.0ms | Allocations: 3841)
+
+
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-18 16:57:18 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"yama", "email"=>"yama@sample.com", "telephone"=>"0311112222", "delivery_address"=>"神奈川県横浜市"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 1.3ms | Allocations: 722)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 1723)
+Completed 200 OK in 20ms (Views: 15.0ms | ActiveRecord: 0.0ms | Allocations: 2668)
+
+
+Started POST "/orders" for 192.168.96.1 at 2023-01-18 16:57:24 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"yama", "email"=>"yama@sample.com", "telephone"=>"0311112222", "delivery_address"=>"神奈川県横浜市"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:13:in `create'
+  [1m[36mOrder Create (9.0ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at", "email", "telephone", "delivery_address") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "yama"], ["created_at", "2023-01-18 16:57:24.855521"], ["updated_at", "2023-01-18 16:57:24.855521"], ["email", "yama@sample.com"], ["telephone", "0311112222"], ["delivery_address", "神奈川県横浜市"]]
+  ↳ app/controllers/orders_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:13:in `create'
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 35ms (ActiveRecord: 15.5ms | Allocations: 3914)
+
+
+Started GET "/orders/complete" for 192.168.96.1 at 2023-01-18 16:57:24 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 2.6ms | Allocations: 130)
+  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 1647)
+Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms | Allocations: 1930)
+
+
