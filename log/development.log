@@ -1466,3 +1466,30 @@ Processing by OrdersController#confirm as HTML
 Completed 200 OK in 74ms (Views: 31.7ms | ActiveRecord: 11.3ms | Allocations: 12786)
 
 
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-19 11:49:47 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 2068)
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | Allocations: 3241)
+Completed 200 OK in 114ms (Views: 35.1ms | ActiveRecord: 2.6ms | Allocations: 7760)
+
+
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-19 11:51:59 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"江戸川コナン", "email"=>"SAMPLE@EXAMPLE.COM", "telephone"=>" ０３-４４４４-５５６６", "delivery_address"=>"米花町"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 21.1ms | Allocations: 10461)
+  Rendered layout layouts/application.html.erb (Duration: 31.4ms | Allocations: 11579)
+Completed 200 OK in 41ms (Views: 34.6ms | ActiveRecord: 0.0ms | Allocations: 12937)
+
+
