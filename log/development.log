@@ -1493,3 +1493,188 @@ Processing by OrdersController#confirm as HTML
 Completed 200 OK in 41ms (Views: 34.6ms | ActiveRecord: 0.0ms | Allocations: 12937)
 
 
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-19 15:56:55 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1902)
+  Rendered layout layouts/application.html.erb (Duration: 30.6ms | Allocations: 2913)
+Completed 200 OK in 38ms (Views: 34.6ms | Allocations: 3276)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-19 16:04:02 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 45.6ms | Allocations: 13577)
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 13680)
+Completed 500 Internal Server Error in 57ms (Allocations: 14600)
+
+
+  
+ActionView::Template::Error (Missing partial shared/_error_messages with {:locale=>[:ja], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/app/app/views"
+  * "/usr/local/bundle/gems/actiontext-7.0.3/app/views"
+  * "/usr/local/bundle/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  shared/error_messages_html
+               action_text/attachables/remote_image
+               action_text/attachables/missing_attachable
+               active_storage/blobs/blob
+               action_text/attachment_galleries/attachment_gallery
+               action_text/contents/content):
+     6:       <div class="mb-3">
+     7:         <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %>
+     8:         <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-control' %>
+     9:         <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :name } %>
+    10:       </div>
+    11:     </div>
+    12: 
+  
+app/views/orders/new.html.erb:9
+app/views/orders/new.html.erb:4
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-19 16:05:42 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 590.2ms | Allocations: 37513)
+  Rendered layout layouts/application.html.erb (Duration: 592.6ms | Allocations: 37625)
+Completed 500 Internal Server Error in 698ms (ActiveRecord: 8.5ms | Allocations: 47352)
+
+
+  
+ActionView::Template::Error (Missing partial shared/_error_messages with {:locale=>[:ja], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}.
+
+Searched in:
+  * "/app/app/views"
+  * "/usr/local/bundle/gems/actiontext-7.0.3/app/views"
+  * "/usr/local/bundle/gems/actionmailbox-7.0.3/app/views"
+
+Did you mean?  shared/error_messages_html
+               action_text/attachables/remote_image
+               action_text/attachables/missing_attachable
+               active_storage/blobs/blob
+               action_text/attachment_galleries/attachment_gallery
+               action_text/contents/content):
+     6:       <div class="mb-3">
+     7:         <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %>
+     8:         <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-control' %>
+     9:         <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :name } %>
+    10:       </div>
+    11:     </div>
+    12: 
+  
+app/views/orders/new.html.erb:9
+app/views/orders/new.html.erb:4
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-19 16:06:28 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 2.6ms | Allocations: 176)
+  Rendered orders/new.html.erb within layouts/application (Duration: 10.4ms | Allocations: 3055)
+  Rendered layout layouts/application.html.erb (Duration: 415.2ms | Allocations: 23782)
+Completed 200 OK in 425ms (Views: 419.9ms | ActiveRecord: 0.0ms | Allocations: 24740)
+
+
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-19 16:06:33 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"", "email"=>"", "telephone"=>"", "delivery_address"=>""}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 389)
+  Rendered orders/new.html.erb within layouts/application (Duration: 21.4ms | Allocations: 6283)
+  Rendered layout layouts/application.html.erb (Duration: 32.8ms | Allocations: 7379)
+Completed 200 OK in 41ms (Views: 36.0ms | ActiveRecord: 0.0ms | Allocations: 9350)
+
+
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-19 16:06:37 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"", "email"=>"", "telephone"=>"", "delivery_address"=>""}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 1.5ms | Allocations: 374)
+  Rendered orders/new.html.erb within layouts/application (Duration: 17.9ms | Allocations: 5950)
+  Rendered layout layouts/application.html.erb (Duration: 30.2ms | Allocations: 6950)
+Completed 200 OK in 38ms (Views: 33.5ms | ActiveRecord: 0.0ms | Allocations: 8382)
+
+
+Started GET "/orders/" for 192.168.96.1 at 2023-01-19 16:06:44 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  
+ActionController::RoutingError (No route matches [GET] "/orders"):
+  
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-19 16:06:50 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 26)
+  Rendered orders/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1960)
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 3062)
+Completed 200 OK in 24ms (Views: 21.0ms | ActiveRecord: 0.0ms | Allocations: 3440)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-20 10:41:20 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (14.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 4.0ms | Allocations: 222)
+  Rendered orders/new.html.erb within layouts/application (Duration: 839.6ms | Allocations: 37171)
+  Rendered layout layouts/application.html.erb (Duration: 1364.5ms | Allocations: 57914)
+Completed 200 OK in 1529ms (Views: 1377.3ms | ActiveRecord: 12.3ms | Allocations: 67656)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-20 10:41:51 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 3.6ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 25.2ms | Allocations: 2931)
+  Rendered layout layouts/application.html.erb (Duration: 42.2ms | Allocations: 4276)
+Completed 200 OK in 52ms (Views: 47.3ms | ActiveRecord: 0.0ms | Allocations: 5193)
+
+
+Started POST "/orders/confirm" for 192.168.96.1 at 2023-01-20 10:42:54 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"", "email"=>"", "telephone"=>"", "delivery_address"=>""}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 5.8ms | Allocations: 531)
+  Rendered shared/_error_messages.html.erb (Duration: 1.3ms | Allocations: 472)
+  Rendered shared/_error_messages.html.erb (Duration: 2.1ms | Allocations: 718)
+  Rendered shared/_error_messages.html.erb (Duration: 1.2ms | Allocations: 385)
+  Rendered orders/new.html.erb within layouts/application (Duration: 39.2ms | Allocations: 7249)
+  Rendered layout layouts/application.html.erb (Duration: 55.4ms | Allocations: 8585)
+Completed 200 OK in 69ms (Views: 62.7ms | ActiveRecord: 0.0ms | Allocations: 11067)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-20 10:43:00 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 24)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 13.8ms | Allocations: 2173)
+  Rendered layout layouts/application.html.erb (Duration: 31.4ms | Allocations: 3183)
+Completed 200 OK in 40ms (Views: 35.5ms | ActiveRecord: 0.0ms | Allocations: 3501)
+
+
