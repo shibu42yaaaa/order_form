@@ -15,17 +15,58 @@ RSpec.describe Order, type: :model do
       }
     end
 
-    it '返り値はtrueとなること' do
-      order = Order.new(params)
-      expect(order.valid?).to eq true
-    end
+    subject { Order.new(params).valid? }
 
+    it { is_expected.to eq true }
+    
+    # 異常系テスト
     context '名前が空白の場合' do
       let(:name) {''}
-      it '返り値はfalseとなること' do
-        order = Order.new(params)
-        expect(order.valid?).to eq false
-      end
+
+      it { is_expected.to eq false }
+    end
+    context 'メールアドレスが空白の場合' do
+      let(:email) {''}
+
+      it { is_expected.to eq false }
+    end
+    context 'メールアドレスの書式が正しくない場合' do
+      let(:email) {'testtesttest.com'}
+
+      it { is_expected.to eq false }
+    end
+    context 'メールアドレスが全角の場合' do
+      let(:email) {'ｆａｊｇａｇｊ＠ａｖｋ．ｃｏｍ'}
+
+      it { is_expected.to eq true }
+    end
+
+    context '電話番号が空白の場合' do
+      let(:telephone) {''}
+
+      it { is_expected.to eq false }
+    end
+    context '電話番号が全角の場合' do
+      let(:telephone) {'０８０３３３３４４４４'}
+
+      it { is_expected.to eq true }
+    end
+    context '電話番号に数字以外が入っている場合' do
+      let(:telephone) {'080-1111-4444'}
+
+      it { is_expected.to eq true }
+    end
+    context '電話番号が12桁の場合' do
+      let(:telephone) {'080111144441'}
+
+      it { is_expected.to eq false }
+    end
+
+
+    context 'お届け先住所が空白の場合' do
+      let(:delivery_address) {''}
+
+      it { is_expected.to eq false }
     end
   end
 end
