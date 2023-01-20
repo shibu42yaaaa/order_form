@@ -1678,3 +1678,33 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 40ms (Views: 35.5ms | ActiveRecord: 0.0ms | Allocations: 3501)
 
 
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-20 10:50:40 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 2.8ms | Allocations: 222)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 618.4ms | Allocations: 37371)
+  Rendered layout layouts/application.html.erb (Duration: 1026.4ms | Allocations: 58126)
+Completed 200 OK in 1183ms (Views: 1039.0ms | ActiveRecord: 14.0ms | Allocations: 67868)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-20 10:51:00 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 24)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 16.2ms | Allocations: 2147)
+  Rendered layout layouts/application.html.erb (Duration: 34.3ms | Allocations: 3157)
+Completed 200 OK in 44ms (Views: 39.4ms | ActiveRecord: 0.0ms | Allocations: 3515)
+
+
