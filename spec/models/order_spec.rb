@@ -21,6 +21,7 @@ RSpec.describe Order, type: :model do
     end
 
     context '名前が空白の場合' do
+      let(:name) {''}
       it '返り値はfalseとなること' do
         order = Order.new(params)
         expect(order.valid?).to eq false
