@@ -1774,3 +1774,164 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 33ms (Views: 29.4ms | ActiveRecord: 0.0ms | Allocations: 5256)
 
 
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePaymentMethods (20230121122945)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (10.1ms)[0m  [1m[35mCREATE TABLE "payment_methods" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (5.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230121122945"]]
+  [1m[36mTRANSACTION (8.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddReferencePaymentMethodIdToOrders (20230121123109)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (12.0ms)[0m  [1m[35mALTER TABLE "orders" ADD "peyment_method_id" integer[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE INDEX "index_orders_on_peyment_method_id" ON "orders" ("peyment_method_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (7.8ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aorders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "peyment_method_id" integer DEFAULT NULL)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE INDEX "tindex_aorders_on_peyment_method_id" ON "aorders" ("peyment_method_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aorders" ("id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id" FROM "orders"[0m
+  [1m[35m (2.7ms)[0m  [1m[35mDROP TABLE "orders"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "peyment_method_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_0d79d4992e"
+FOREIGN KEY ("peyment_method_id")
+  REFERENCES "peyment_methods" ("id")
+ ON DELETE RESTRICT ON UPDATE RESTRICT)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_orders_on_peyment_method_id" ON "orders" ("peyment_method_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "orders" ("id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id" FROM "aorders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (4.6ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-21 21:43:33 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (13.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20230121123109_add_reference_payment_method_id_to_orders.rb
+
+
+):
+  
+activerecord (7.0.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:19:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.3) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `block in tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:38:in `tagged'
+activesupport (7.0.3) lib/active_support/tagged_logging.rb:114:in `tagged'
+railties (7.0.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3.1) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3.1) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3.1) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.4) lib/puma/configuration.rb:252:in `call'
+puma (5.6.4) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.4) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.4) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.4) lib/puma/server.rb:441:in `process_client'
+puma (5.6.4) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddReferencePaymentMethodIdToOrders (20230121123109)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (8.2ms)[0m  [1m[35mALTER TABLE "orders" ADD "peyment_method_id" integer[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_orders_on_peyment_method_id" ON "orders" ("peyment_method_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aorders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "peyment_method_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aorders_on_peyment_method_id" ON "aorders" ("peyment_method_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aorders" ("id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id" FROM "orders"[0m
+  [1m[35m (2.3ms)[0m  [1m[35mDROP TABLE "orders"[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "peyment_method_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_0d79d4992e"
+FOREIGN KEY ("peyment_method_id")
+  REFERENCES "peyment_methods" ("id")
+ ON DELETE RESTRICT ON UPDATE RESTRICT)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_orders_on_peyment_method_id" ON "orders" ("peyment_method_id")[0m
+  [1m[35m (16.9ms)[0m  [1m[32mINSERT INTO "orders" ("id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","peyment_method_id" FROM "aorders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddReferencePaymentMethodIdToOrders (20230121123109)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.6ms)[0m  [1m[35mALTER TABLE "orders" ADD "payment_method_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_orders_on_payment_method_id" ON "orders" ("payment_method_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aorders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "payment_method_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aorders_on_payment_method_id" ON "aorders" ("payment_method_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aorders" ("id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id" FROM "orders"[0m
+  [1m[35m (1.9ms)[0m  [1m[35mDROP TABLE "orders"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "payment_method_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_fa5e448daa"
+FOREIGN KEY ("payment_method_id")
+  REFERENCES "payment_methods" ("id")
+ ON DELETE RESTRICT ON UPDATE RESTRICT)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_orders_on_payment_method_id" ON "orders" ("payment_method_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id" FROM "aorders"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aorders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (7.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230121123109"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-21 21:46:06 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (11.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 3.2ms | Allocations: 222)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 600.2ms | Allocations: 37372)
+  Rendered layout layouts/application.html.erb (Duration: 938.8ms | Allocations: 58101)
+Completed 200 OK in 1056ms (Views: 946.7ms | ActiveRecord: 9.3ms | Allocations: 68329)
+
+
