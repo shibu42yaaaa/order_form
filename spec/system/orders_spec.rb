@@ -10,7 +10,7 @@ RSpec.describe "注文フォーム", type: :system do
   it '商品を注文できること' do
     visit new_order_path
 
-    fill_in 'お名前', with: name
+    fill_in 'order_name', with: name
     fill_in 'メールアドレス', with: email
     fill_in '電話番号', with: telephone
     fill_in 'お届け先住所', with: delivery_address
@@ -40,7 +40,7 @@ RSpec.describe "注文フォーム", type: :system do
     it '確認画面へ遷移することができない' do
       visit new_order_path
   
-      fill_in 'お名前', with: name
+      fill_in 'order_name', with: name
       fill_in 'メールアドレス', with: email
       fill_in '電話番号', with: 123456789011
       fill_in 'お届け先住所', with: delivery_address
@@ -55,7 +55,7 @@ RSpec.describe "注文フォーム", type: :system do
       it '商品を注文できること' do
         visit new_order_path
 
-        fill_in 'お名前', with: name
+        fill_in 'order_name', with: name
         fill_in 'メールアドレス', with: email
         fill_in '電話番号', with: telephone
         fill_in 'お届け先住所', with: delivery_address
@@ -67,7 +67,7 @@ RSpec.describe "注文フォーム", type: :system do
         click_on '戻る'
         expect(current_path).to eq orders_path
 
-        expect(page).to have_field 'お名前', with: name
+        expect(page).to have_field 'order_name', with: name
         expect(page).to have_field 'メールアドレス', with: email
         expect(page).to have_field '電話番号', with: telephone
         expect(page).to have_field 'お届け先住所', with: delivery_address

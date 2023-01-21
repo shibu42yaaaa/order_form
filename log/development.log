@@ -1708,3 +1708,69 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 44ms (Views: 39.4ms | ActiveRecord: 0.0ms | Allocations: 3515)
 
 
+Started GET "/" for 192.168.96.1 at 2023-01-21 18:13:20 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (12.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.2ms | Allocations: 538)
+Completed 200 OK in 45ms (Views: 11.2ms | ActiveRecord: 0.0ms | Allocations: 3727)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-21 18:13:25 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 2.5ms | Allocations: 218)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 649.8ms | Allocations: 37163)
+  Rendered layout layouts/application.html.erb (Duration: 1064.0ms | Allocations: 57925)
+Completed 200 OK in 1156ms (Views: 1069.1ms | ActiveRecord: 8.5ms | Allocations: 65410)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-21 18:17:19 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2141)
+  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 3152)
+Completed 200 OK in 22ms (Views: 19.9ms | ActiveRecord: 0.0ms | Allocations: 3497)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-21 18:17:20 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 24)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2151)
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 3162)
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.0ms | Allocations: 3473)
+
+
+Started GET "/orders/new" for 192.168.96.1 at 2023-01-21 18:17:27 +0900
+Cannot render console from 192.168.96.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 1.3ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 14.0ms | Allocations: 3018)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 4364)
+Completed 200 OK in 33ms (Views: 29.4ms | ActiveRecord: 0.0ms | Allocations: 5256)
+
+
