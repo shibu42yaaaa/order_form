@@ -1961,3 +1961,386 @@ Completed 200 OK in 1056ms (Views: 946.7ms | ActiveRecord: 9.3ms | Allocations: 
   [1m[36mPaymentMethod Create (0.1ms)[0m  [1m[32mINSERT INTO "payment_methods" ("id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 4], ["name", "コンビニ払い"], ["created_at", "2023-01-21 22:20:24.340359"], ["updated_at", "2023-01-21 22:20:24.340359"]]
   [1m[36mPaymentMethod Create (2.6ms)[0m  [1m[32mINSERT INTO "payment_methods" ("id", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["id", 5], ["name", "リボ払い"], ["created_at", "2023-01-21 22:20:24.369878"], ["updated_at", "2023-01-21 22:20:24.369878"]]
   [1m[36mTRANSACTION (6.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-21 22:25:35 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 2.0ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 220.7ms | Allocations: 24514)
+  Rendered layout layouts/application.html.erb (Duration: 231.3ms | Allocations: 25859)
+Completed 200 OK in 296ms (Views: 234.9ms | ActiveRecord: 2.4ms | Allocations: 31680)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-21 22:27:36 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 2.2ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 16.8ms | Allocations: 2990)
+  Rendered layout layouts/application.html.erb (Duration: 29.1ms | Allocations: 4337)
+Completed 200 OK in 37ms (Views: 33.7ms | ActiveRecord: 0.0ms | Allocations: 5250)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-21 22:39:42 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 9.8ms | Allocations: 1759)
+  Rendered layout layouts/application.html.erb (Duration: 11.9ms | Allocations: 1861)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 2.7ms | Allocations: 7028)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container mt-3 mb-5">
+  <h1 class="text-center mb-5">注文フォーム</h1>
+
+  <%= form_for @order, url: confirm_orders_path do |f| %>
+    <div class="col-md-6 mx-auto mb-5">
+      <div class="mb-3">
+        <!-- <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %> -->
+        <div>お名前</div>
+        <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-control' %>
+        <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :name } %>
+      </div>
+
+    <div class="mb-3">
+      <%= f.label :email, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.text_field :email, size: 100, placeholder: 'sample@sample.com', class: 'form-control' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :email } %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :telephone, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.text_field :telephone, size: 40, placeholder: '0312345678', class: 'form-control' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :telephone } %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :delivery_address, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.text_field :delivery_address, size: 40, placeholder: 'お届け先の住所をご入力下さい', class: 'form-control' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :delivery_address } %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :payment_method_id, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.select :payment_method_id,PaymentMethod.selectable_methods, { include_blank: true } class: 'form-select' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :payment_method_id } %>
+    </div>
+
+  </div>
+
+  <div class="d-grid col-md-6 mx-auto">
+    <%= f.button '確認画面へ', class: 'btn btn-lg btn-primary' %>
+  </div>
+  <% end %>
+</div>
+
+):
+1:    <div class="container mt-3 mb-5">
+2:      <h1 class="text-center mb-5">注文フォーム</h1>
+3:    
+4:      <%= form_for @order, url: confirm_orders_path do |f| %>
+5:        <div class="col-md-6 mx-auto mb-5">
+6:          <div class="mb-3">
+7:            <!-- <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %> -->
+8:            <div>お名前</div>
+9:            <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-control' %>
+10:            <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :name } %>
+11:          </div>
+12:    
+13:        <div class="mb-3">
+14:          <%= f.label :email, class: 'form-label border-start border-primary border-4 ps-1' %>
+15:          <%= f.text_field :email, size: 100, placeholder: 'sample@sample.com', class: 'form-control' %>
+16:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :email } %>
+17:        </div>
+18:    
+19:        <div class="mb-3">
+20:          <%= f.label :telephone, class: 'form-label border-start border-primary border-4 ps-1' %>
+21:          <%= f.text_field :telephone, size: 40, placeholder: '0312345678', class: 'form-control' %>
+22:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :telephone } %>
+23:        </div>
+24:    
+25:        <div class="mb-3">
+26:          <%= f.label :delivery_address, class: 'form-label border-start border-primary border-4 ps-1' %>
+27:          <%= f.text_field :delivery_address, size: 40, placeholder: 'お届け先の住所をご入力下さい', class: 'form-control' %>
+28:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :delivery_address } %>
+29:        </div>
+30:    
+31:        <div class="mb-3">
+32:          <%= f.label :payment_method_id, class: 'form-label border-start border-primary border-4 ps-1' %>
+33:          <%= f.select :payment_method_id,PaymentMethod.selectable_methods, { include_blank: true } class: 'form-select' %>
+34:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :payment_method_id } %>
+35:        </div>
+36:    
+37:      </div>
+38:    
+39:      <div class="d-grid col-md-6 mx-auto">
+40:        <%= f.button '確認画面へ', class: 'btn btn-lg btn-primary' %>
+41:      </div>
+42:      <% end %>
+43:    </div>
+  
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-21 22:41:14 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered orders/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1529)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 1624)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 2522)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="container mt-3 mb-5">
+  <h1 class="text-center mb-5">注文フォーム</h1>
+
+  <%= form_for @order, url: confirm_orders_path do |f| %>
+    <div class="col-md-6 mx-auto mb-5">
+      <div class="mb-3">
+        <!-- <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %> -->
+        <div>お名前</div>
+        <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-control' %>
+        <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :name } %>
+      </div>
+
+    <div class="mb-3">
+      <%= f.label :email, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.text_field :email, size: 100, placeholder: 'sample@sample.com', class: 'form-control' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :email } %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :telephone, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.text_field :telephone, size: 40, placeholder: '0312345678', class: 'form-control' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :telephone } %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :delivery_address, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.text_field :delivery_address, size: 40, placeholder: 'お届け先の住所をご入力下さい', class: 'form-control' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :delivery_address } %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :payment_method_id, class: 'form-label border-start border-primary border-4 ps-1' %>
+      <%= f.select :payment_method_id, PaymentMethod.selectable_methods, { include_blank: true } class: 'form-select' %>
+      <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :payment_method_id } %>
+    </div>
+
+  </div>
+
+  <div class="d-grid col-md-6 mx-auto">
+    <%= f.button '確認画面へ', class: 'btn btn-lg btn-primary' %>
+  </div>
+  <% end %>
+</div>
+
+):
+1:    <div class="container mt-3 mb-5">
+2:      <h1 class="text-center mb-5">注文フォーム</h1>
+3:    
+4:      <%= form_for @order, url: confirm_orders_path do |f| %>
+5:        <div class="col-md-6 mx-auto mb-5">
+6:          <div class="mb-3">
+7:            <!-- <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %> -->
+8:            <div>お名前</div>
+9:            <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-control' %>
+10:            <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :name } %>
+11:          </div>
+12:    
+13:        <div class="mb-3">
+14:          <%= f.label :email, class: 'form-label border-start border-primary border-4 ps-1' %>
+15:          <%= f.text_field :email, size: 100, placeholder: 'sample@sample.com', class: 'form-control' %>
+16:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :email } %>
+17:        </div>
+18:    
+19:        <div class="mb-3">
+20:          <%= f.label :telephone, class: 'form-label border-start border-primary border-4 ps-1' %>
+21:          <%= f.text_field :telephone, size: 40, placeholder: '0312345678', class: 'form-control' %>
+22:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :telephone } %>
+23:        </div>
+24:    
+25:        <div class="mb-3">
+26:          <%= f.label :delivery_address, class: 'form-label border-start border-primary border-4 ps-1' %>
+27:          <%= f.text_field :delivery_address, size: 40, placeholder: 'お届け先の住所をご入力下さい', class: 'form-control' %>
+28:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :delivery_address } %>
+29:        </div>
+30:    
+31:        <div class="mb-3">
+32:          <%= f.label :payment_method_id, class: 'form-label border-start border-primary border-4 ps-1' %>
+33:          <%= f.select :payment_method_id, PaymentMethod.selectable_methods, { include_blank: true } class: 'form-select' %>
+34:          <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :payment_method_id } %>
+35:        </div>
+36:    
+37:      </div>
+38:    
+39:      <div class="d-grid col-md-6 mx-auto">
+40:        <%= f.button '確認画面へ', class: 'btn btn-lg btn-primary' %>
+41:      </div>
+42:      <% end %>
+43:    </div>
+  
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+app/views/orders/new.html.erb:33: syntax error, unexpected `class', expecting ')'
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-21 22:44:17 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 2.3ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (2.1ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered orders/new.html.erb within layouts/application (Duration: 78.8ms | Allocations: 15498)
+  Rendered layout layouts/application.html.erb (Duration: 97.0ms | Allocations: 16891)
+Completed 200 OK in 106ms (Views: 90.8ms | ActiveRecord: 10.0ms | Allocations: 17825)
+
+
+Started GET "/" for 172.28.0.1 at 2023-01-22 17:52:49 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (16.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 22.6ms | Allocations: 538)
+Completed 200 OK in 129ms (Views: 40.7ms | ActiveRecord: 0.0ms | Allocations: 3728)
+
+
+Started GET "/" for 172.28.0.1 at 2023-01-22 17:52:55 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/bundle/gems/railties-7.0.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.6ms | Allocations: 319)
+Completed 200 OK in 15ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 1055)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-22 17:53:00 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 4.3ms | Allocations: 218)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (4.6ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 34)
+  Rendered orders/new.html.erb within layouts/application (Duration: 993.8ms | Allocations: 40438)
+  Rendered layout layouts/application.html.erb (Duration: 1550.1ms | Allocations: 61209)
+Completed 200 OK in 1658ms (Views: 1535.0ms | ActiveRecord: 31.7ms | Allocations: 69678)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-22 17:57:51 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"", "email"=>"", "telephone"=>"", "delivery_address"=>"", "payment_method_id"=>"4"}, "button"=>""}
+  [1m[36mPaymentMethod Load (2.3ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:9:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 6.8ms | Allocations: 531)
+  Rendered shared/_error_messages.html.erb (Duration: 1.6ms | Allocations: 472)
+  Rendered shared/_error_messages.html.erb (Duration: 2.1ms | Allocations: 718)
+  Rendered shared/_error_messages.html.erb (Duration: 1.8ms | Allocations: 385)
+  [1m[36mPaymentMethod Load (3.1ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 29)
+  Rendered orders/new.html.erb within layouts/application (Duration: 54.2ms | Allocations: 8299)
+  Rendered layout layouts/application.html.erb (Duration: 73.9ms | Allocations: 9636)
+Completed 200 OK in 174ms (Views: 77.8ms | ActiveRecord: 5.4ms | Allocations: 17156)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-22 17:59:15 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"両津勘吉", "email"=>"ryotsu@salmple.com", "telephone"=>"09011112222", "delivery_address"=>"東京都葛飾区亀有公園前派出所", "payment_method_id"=>"1"}, "button"=>""}
+  [1m[36mPaymentMethod Load (2.2ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:9:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 23.6ms | Allocations: 10991)
+  Rendered layout layouts/application.html.erb (Duration: 37.9ms | Allocations: 12111)
+Completed 200 OK in 57ms (Views: 41.6ms | ActiveRecord: 2.2ms | Allocations: 14044)
+
+
+Started POST "/orders" for 172.28.0.1 at 2023-01-22 17:59:17 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"両津勘吉", "email"=>"ryotsu@salmple.com", "telephone"=>"09011112222", "delivery_address"=>"東京都葛飾区亀有公園前派出所", "payment_method_id"=>"1"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mPaymentMethod Load (2.4ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mOrder Create (19.2ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at", "email", "telephone", "delivery_address", "payment_method_id") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "両津勘吉"], ["created_at", "2023-01-22 17:59:17.553073"], ["updated_at", "2023-01-22 17:59:17.553073"], ["email", "ryotsu@salmple.com"], ["telephone", "09011112222"], ["delivery_address", "東京都葛飾区亀有公園前派出所"], ["payment_method_id", 1]]
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (9.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 61ms (ActiveRecord: 31.4ms | Allocations: 5029)
+
+
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-22 17:59:17 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (5.0ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `complete'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 3.4ms | Allocations: 183)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 1197)
+Completed 200 OK in 35ms (Views: 20.7ms | ActiveRecord: 5.0ms | Allocations: 3378)
+
+
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-22 17:59:46 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (3.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `complete'
+Redirected to http://localhost:3000/orders/new
+Completed 302 Found in 15ms (ActiveRecord: 3.2ms | Allocations: 1384)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-22 17:59:46 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 26)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (2.7ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 23.6ms | Allocations: 3327)
+  Rendered layout layouts/application.html.erb (Duration: 38.5ms | Allocations: 4337)
+Completed 200 OK in 47ms (Views: 40.1ms | ActiveRecord: 2.7ms | Allocations: 4639)
+
+
