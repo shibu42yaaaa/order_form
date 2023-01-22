@@ -36,6 +36,8 @@ class OrdersController < ApplicationController
               :email,
               :telephone,
               :delivery_address,
-              :payment_method_id)
+              :payment_method_id,
+              :other_comment
+            )
   end
 end
