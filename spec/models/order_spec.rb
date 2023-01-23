@@ -8,6 +8,7 @@ RSpec.describe Order, type: :model do
     let(:delivery_address) {'葛飾区亀有公園前派出所'}
     let(:payment_method_id) { 1 }
     let(:other_comment) { 'ワシのプラモだ' }
+    let(:direct_mail_enabled) { true }
     let(:params) do
       {
         name:,
@@ -15,7 +16,8 @@ RSpec.describe Order, type: :model do
         telephone:,
         delivery_address:,
         payment_method_id:,
-        other_comment:
+        other_comment:,
+        direct_mail_enabled:
       }
     end
 
@@ -93,6 +95,12 @@ RSpec.describe Order, type: :model do
 
     context 'その他・ご要望欄の文字数が1001文字以上の場合' do
       let(:other_comment) { 'あ' * 1_001 }
+
+      it { is_expected.to eq false }
+    end
+
+    context 'メールマガジンの配信要否が未選択の場合' do
+      let(:direct_mail_enabled) { nil }
 
       it { is_expected.to eq false }
     end

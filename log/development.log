@@ -2726,3 +2726,538 @@ Processing by OrdersController#new as HTML
 Completed 200 OK in 72ms (Views: 65.8ms | ActiveRecord: 2.9ms | Allocations: 5827)
 
 
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDirectMailEnabledToOrders (20230122120438)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aorders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "payment_method_id" integer DEFAULT NULL, "other_comment" varchar(1000) DEFAULT '' NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aorders_on_payment_method_id" ON "aorders" ("payment_method_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "aorders" ("id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment" FROM "orders"[0m
+  [1m[35m (19.8ms)[0m  [1m[35mDROP TABLE "orders"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "payment_method_id" integer DEFAULT NULL, "other_comment" varchar(1000) DEFAULT '' NOT NULL, "direct_mail_enabled" boolean NOT NULL, CONSTRAINT "fk_rails_fa5e448daa"
+FOREIGN KEY ("payment_method_id")
+  REFERENCES "payment_methods" ("id")
+ ON DELETE RESTRICT ON UPDATE RESTRICT)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_orders_on_payment_method_id" ON "orders" ("payment_method_id")[0m
+  [1m[35m (8.6ms)[0m  [1m[32mINSERT INTO "orders" ("id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment" FROM "aorders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDirectMailEnabledToOrders (20230122120438)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aorders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "payment_method_id" integer DEFAULT NULL, "other_comment" varchar(1000) DEFAULT '' NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_aorders_on_payment_method_id" ON "aorders" ("payment_method_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "aorders" ("id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment" FROM "orders"[0m
+  [1m[35m (19.6ms)[0m  [1m[35mDROP TABLE "orders"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "email" varchar NOT NULL, "telephone" varchar NOT NULL, "delivery_address" varchar NOT NULL, "payment_method_id" integer DEFAULT NULL, "other_comment" varchar(1000) DEFAULT '' NOT NULL, "direct_mail_enabled" boolean NOT NULL, CONSTRAINT "fk_rails_fa5e448daa"
+FOREIGN KEY ("payment_method_id")
+  REFERENCES "payment_methods" ("id")
+ ON DELETE RESTRICT ON UPDATE RESTRICT)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_orders_on_payment_method_id" ON "orders" ("payment_method_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "orders" ("id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment")
+                     SELECT "id","name","created_at","updated_at","email","telephone","delivery_address","payment_method_id","other_comment" FROM "aorders"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aorders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::SchemaMigration Create (7.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230122120438"]]
+  [1m[36mTRANSACTION (10.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (3.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-22 21:08:45 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (17.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 4.7ms | Allocations: 222)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (4.5ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 35)
+  Rendered orders/new.html.erb within layouts/application (Duration: 848.7ms | Allocations: 41305)
+  Rendered layout layouts/application.html.erb (Duration: 1386.5ms | Allocations: 62099)
+Completed 200 OK in 1549ms (Views: 1381.6ms | ActiveRecord: 30.2ms | Allocations: 73972)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-22 21:28:21 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 3.1ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (2.5ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 325.5ms | Allocations: 27658)
+  Rendered layout layouts/application.html.erb (Duration: 342.3ms | Allocations: 29039)
+Completed 200 OK in 381ms (Views: 345.2ms | ActiveRecord: 5.2ms | Allocations: 34571)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 06:48:57 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 3.1ms | Allocations: 222)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (4.0ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 34)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 35)
+  Rendered orders/new.html.erb within layouts/application (Duration: 956.3ms | Allocations: 49466)
+  Rendered layout layouts/application.html.erb (Duration: 960.1ms | Allocations: 49579)
+Completed 500 Internal Server Error in 1114ms (ActiveRecord: 25.9ms | Allocations: 61434)
+
+
+  
+ActionView::Template::Error (undefined method `direct_mail_enable' for #<Order id: nil, name: nil, created_at: nil, updated_at: nil, email: nil, telephone: nil, delivery_address: nil, payment_method_id: nil, other_comment: "", direct_mail_enabled: nil>
+Did you mean?  direct_mail_enabled
+               direct_mail_enabled=
+               direct_mail_enabled?
+               direct_mail_enabled_was):
+    44:       <div class="mb-2 fs-6">*お得な情報満載のメールマガジンを配信中</div>
+    45:       <div class="form-check form-check-inline">
+    46:         <label class="form-check-label">
+    47:           <%= f.radio_button :direct_mail_enable, false, class: 'form-check-input' %>
+    48:           配信は不要
+    49:         </label>
+    50:       </div>
+  
+app/views/orders/new.html.erb:47
+app/views/orders/new.html.erb:4
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 06:49:51 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 3.5ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.5ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (2.6ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 45.0ms | Allocations: 5355)
+  Rendered layout layouts/application.html.erb (Duration: 482.3ms | Allocations: 26089)
+Completed 200 OK in 493ms (Views: 484.7ms | ActiveRecord: 2.6ms | Allocations: 27051)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 07:08:30 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+Completed 500 Internal Server Error in 44ms (Allocations: 2679)
+
+
+  
+ArgumentError (Unknown validator: 'MessageValidator'):
+  
+app/models/order.rb:13:in `<class:Order>'
+app/models/order.rb:3:in `<main>'
+app/controllers/orders_controller.rb:3:in `new'
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 07:10:04 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+Completed 500 Internal Server Error in 15ms (Allocations: 1167)
+
+
+  
+SyntaxError (/app/app/models/order.rb:13: syntax error, unexpected '}', expecting `end'
+  }, 
+  ^
+):
+  
+app/models/order.rb:13: syntax error, unexpected '}', expecting `end'
+app/models/order.rb:13: syntax error, unexpected '}', expecting `end'
+app/models/order.rb:13: syntax error, unexpected '}', expecting `end'
+app/controllers/orders_controller.rb:3:in `new'
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 07:10:15 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 2.0ms | Allocations: 170)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (3.1ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 28)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 45.1ms | Allocations: 6753)
+  Rendered layout layouts/application.html.erb (Duration: 65.6ms | Allocations: 8142)
+Completed 200 OK in 120ms (Views: 68.9ms | ActiveRecord: 6.1ms | Allocations: 13841)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 07:10:41 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:3:in `new'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 30)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (4.4ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 50.7ms | Allocations: 6192)
+  Rendered layout layouts/application.html.erb (Duration: 66.1ms | Allocations: 7364)
+Completed 200 OK in 136ms (Views: 54.7ms | ActiveRecord: 32.6ms | Allocations: 13299)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-23 14:07:24 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"井之頭五郎", "email"=>"inogashira@sample.com", "telephone"=>"0344444444", "delivery_address"=>"東京都新宿区", "payment_method_id"=>"1", "other_comment"=>"テストテストテスト", "direct_mail_enabled"=>"true"}, "button"=>""}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/orders_controller.rb:7:in `confirm'
+  [1m[36mPaymentMethod Load (3.1ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:9:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 76.5ms | Allocations: 9628)
+  Rendered layout layouts/application.html.erb (Duration: 80.1ms | Allocations: 9720)
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 6.0ms | Allocations: 21904)
+
+
+  
+ActionView::Template::Error (undefined method `direct_mail_enabled_text' for #<Order id: nil, name: "井之頭五郎", created_at: nil, updated_at: nil, email: "inogashira@sample.com", telephone: "0344444444", delivery_address: "東京都新宿区", payment_method_id: 1, other_comment: "テストテストテスト", direct_mail_enabled: true>
+Did you mean?  direct_mail_enabled
+               direct_mail_enabled=
+               direct_mail_enabled?
+               direct_mail_enabled_was
+               direct_mail_enabled_change):
+    47:       <div class="form-label border-start border-primary border-4 ps-1">
+    48:         <%= t('activerecord.attributes.order.direct_mail_enabled') %>
+    49:       </div>
+    50:       <%= @order.direct_mail_enabled_text %>
+    51:     </div>
+    52:   </div>
+    53: 
+  
+app/views/orders/confirm.html.erb:50
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 14:09:15 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (4.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 4.8ms | Allocations: 222)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (3.5ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 34)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 35)
+  Rendered orders/new.html.erb within layouts/application (Duration: 849.2ms | Allocations: 42226)
+  Rendered layout layouts/application.html.erb (Duration: 1378.5ms | Allocations: 63017)
+Completed 200 OK in 1566ms (Views: 1395.1ms | ActiveRecord: 28.9ms | Allocations: 74722)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-23 14:10:00 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"noa", "email"=>"noa@sample.com", "telephone"=>"09088881111", "delivery_address"=>"東京都新宿区", "payment_method_id"=>"1", "other_comment"=>"テストテストテスト", "direct_mail_enabled"=>"true"}, "button"=>""}
+  [1m[36mPaymentMethod Load (2.7ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:9:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 39.5ms | Allocations: 2751)
+  Rendered layout layouts/application.html.erb (Duration: 53.3ms | Allocations: 3872)
+Completed 200 OK in 99ms (Views: 57.5ms | ActiveRecord: 2.7ms | Allocations: 9918)
+
+
+Started POST "/orders" for 172.28.0.1 at 2023-01-23 14:10:02 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"noa", "email"=>"noa@sample.com", "telephone"=>"09088881111", "delivery_address"=>"東京都新宿区", "payment_method_id"=>"1", "other_comment"=>"テストテストテスト", "direct_mail_enabled"=>"true"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mPaymentMethod Load (2.5ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mOrder Create (16.7ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at", "email", "telephone", "delivery_address", "payment_method_id", "other_comment", "direct_mail_enabled") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "noa"], ["created_at", "2023-01-23 14:10:02.791639"], ["updated_at", "2023-01-23 14:10:02.791639"], ["email", "noa@sample.com"], ["telephone", "09088881111"], ["delivery_address", "東京都新宿区"], ["payment_method_id", 1], ["other_comment", "テストテストテスト"], ["direct_mail_enabled", 1]]
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 61ms (ActiveRecord: 30.3ms | Allocations: 5078)
+
+
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-23 14:10:02 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (6.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `complete'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 6.1ms | Allocations: 183)
+  Rendered layout layouts/application.html.erb (Duration: 20.3ms | Allocations: 1197)
+Completed 200 OK in 40ms (Views: 24.2ms | ActiveRecord: 6.1ms | Allocations: 3376)
+
+
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-23 14:10:09 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (3.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `complete'
+Redirected to http://localhost:3000/orders/new
+Completed 302 Found in 14ms (ActiveRecord: 3.2ms | Allocations: 1375)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 14:10:09 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 26)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (2.6ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 31.3ms | Allocations: 4098)
+  Rendered layout layouts/application.html.erb (Duration: 49.6ms | Allocations: 5108)
+Completed 200 OK in 58ms (Views: 51.4ms | ActiveRecord: 2.6ms | Allocations: 5416)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-23 14:40:00 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"", "email"=>"", "telephone"=>"", "delivery_address"=>"", "payment_method_id"=>"", "other_comment"=>"", "direct_mail_enabled"=>"true"}, "button"=>""}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 387)
+  Rendered shared/_error_messages.html.erb (Duration: 2.6ms | Allocations: 474)
+  Rendered shared/_error_messages.html.erb (Duration: 1.9ms | Allocations: 720)
+  Rendered shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 387)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  [1m[36mPaymentMethod Load (3.1ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 1.4ms | Allocations: 387)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 31)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 31)
+  Rendered orders/new.html.erb within layouts/application (Duration: 65.3ms | Allocations: 9837)
+  Rendered layout layouts/application.html.erb (Duration: 78.8ms | Allocations: 10840)
+Completed 200 OK in 87ms (Views: 83.0ms | ActiveRecord: 7.4ms | Allocations: 12373)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 14:40:37 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (12.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 3.2ms | Allocations: 222)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (3.5ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 34)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered orders/new.html.erb within layouts/application (Duration: 655.9ms | Allocations: 42220)
+  Rendered layout layouts/application.html.erb (Duration: 1100.8ms | Allocations: 63023)
+Completed 200 OK in 1257ms (Views: 1099.9ms | ActiveRecord: 29.6ms | Allocations: 74695)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-23 14:41:18 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"tom", "email"=>"tom@sample.com", "telephone"=>"09088889999", "delivery_address"=>"神奈川県横浜市", "payment_method_id"=>"2", "other_comment"=>"aaaaaaaaaaaaaaaa", "direct_mail_enabled"=>"true"}, "button"=>""}
+  [1m[36mPaymentMethod Load (2.6ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:9:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 12.5ms | Allocations: 2729)
+  Rendered layout layouts/application.html.erb (Duration: 25.6ms | Allocations: 3850)
+Completed 200 OK in 73ms (Views: 29.4ms | ActiveRecord: 2.6ms | Allocations: 9916)
+
+
+Started POST "/orders" for 172.28.0.1 at 2023-01-23 14:41:22 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"tom", "email"=>"tom@sample.com", "telephone"=>"09088889999", "delivery_address"=>"神奈川県横浜市", "payment_method_id"=>"2", "other_comment"=>"aaaaaaaaaaaaaaaa", "direct_mail_enabled"=>"true"}, "button"=>""}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mPaymentMethod Load (2.4ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mOrder Create (17.9ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at", "email", "telephone", "delivery_address", "payment_method_id", "other_comment", "direct_mail_enabled") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "tom"], ["created_at", "2023-01-23 14:41:22.290937"], ["updated_at", "2023-01-23 14:41:22.290937"], ["email", "tom@sample.com"], ["telephone", "09088889999"], ["delivery_address", "神奈川県横浜市"], ["payment_method_id", 2], ["other_comment", "aaaaaaaaaaaaaaaa"], ["direct_mail_enabled", 1]]
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+  [1m[36mTRANSACTION (13.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:16:in `create'
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 64ms (ActiveRecord: 33.9ms | Allocations: 5089)
+
+
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-23 14:41:22 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (6.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `complete'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 3.8ms | Allocations: 183)
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 1197)
+Completed 200 OK in 38ms (Views: 21.6ms | ActiveRecord: 6.2ms | Allocations: 3390)
+
+
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-23 14:46:24 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (2.9ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:24:in `complete'
+Redirected to http://localhost:3000/orders/new
+Completed 302 Found in 14ms (ActiveRecord: 2.9ms | Allocations: 1401)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-23 14:46:24 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 26)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (3.7ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 33.2ms | Allocations: 4128)
+  Rendered layout layouts/application.html.erb (Duration: 48.4ms | Allocations: 5139)
+Completed 200 OK in 57ms (Views: 48.9ms | ActiveRecord: 3.7ms | Allocations: 5449)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-23 14:47:09 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"aaa", "email"=>"aaa@example.com", "telephone"=>"09011111111", "delivery_address"=>"東京都葛飾区亀有公園前派出所", "payment_method_id"=>"1", "other_comment"=>"テストテスト", "direct_mail_enabled"=>"true"}, "button"=>""}
+  [1m[36mPaymentMethod Load (2.6ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:9:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 36.2ms | Allocations: 1224)
+  Rendered layout layouts/application.html.erb (Duration: 50.4ms | Allocations: 2226)
+Completed 200 OK in 71ms (Views: 55.9ms | ActiveRecord: 2.6ms | Allocations: 4028)
+
+
+Started POST "/orders" for 172.28.0.1 at 2023-01-23 14:47:10 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"aaa", "email"=>"aaa@example.com", "telephone"=>"09011111111", "delivery_address"=>"東京都葛飾区亀有公園前派出所", "payment_method_id"=>"1", "other_comment"=>"テストテスト", "direct_mail_enabled"=>"true"}, "button"=>"back"}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 24)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (4.0ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 38.1ms | Allocations: 3563)
+  Rendered layout layouts/application.html.erb (Duration: 54.1ms | Allocations: 4566)
+Completed 200 OK in 64ms (Views: 54.9ms | ActiveRecord: 4.0ms | Allocations: 5547)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-23 14:47:16 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"aaa", "email"=>"aaa@example.com", "telephone"=>"09011111111", "delivery_address"=>"東京都葛飾区亀有公園前派出所", "payment_method_id"=>"1", "other_comment"=>"テストテスト", "direct_mail_enabled"=>"true"}, "button"=>""}
+  [1m[36mPaymentMethod Load (2.8ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:9:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1151)
+  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 2153)
+Completed 200 OK in 40ms (Views: 25.4ms | ActiveRecord: 2.8ms | Allocations: 3956)
+
+
+Started POST "/orders" for 172.28.0.1 at 2023-01-23 14:47:24 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"aaa", "email"=>"aaa@example.com", "telephone"=>"09011111111", "delivery_address"=>"東京都葛飾区亀有公園前派出所", "payment_method_id"=>"1", "other_comment"=>"テストテスト", "direct_mail_enabled"=>"true"}, "button"=>"back"}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (2.6ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 34.9ms | Allocations: 3555)
+  Rendered layout layouts/application.html.erb (Duration: 50.1ms | Allocations: 4557)
+Completed 200 OK in 59ms (Views: 51.6ms | ActiveRecord: 2.6ms | Allocations: 5515)
+
+
+Started POST "/orders" for 172.28.0.1 at 2023-01-23 14:48:34 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"aaa", "email"=>"aaa@example.com", "telephone"=>"09011111111", "delivery_address"=>"東京都葛飾区亀有公園前派出所", "payment_method_id"=>"1", "other_comment"=>"テストテスト", "direct_mail_enabled"=>"true"}, "button"=>"back"}
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 24)
+  Rendered shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (3.3ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 23)
+  Rendered orders/new.html.erb within layouts/application (Duration: 33.9ms | Allocations: 3555)
+  Rendered layout layouts/application.html.erb (Duration: 48.4ms | Allocations: 4557)
+Completed 200 OK in 56ms (Views: 48.4ms | ActiveRecord: 3.3ms | Allocations: 5521)
+
+
