@@ -6,4 +6,11 @@ ja:
         email: メールアドレス
         telephone: 電話番号
         delivery_address: お届け先住所
-        
+        payment_method_id: 支払い方法
+        other_comment: その他・ご要望
+        direct_mail_enabled: メールマガジンの配信
+        inflow_source_ids: サイトを知ったきっかけ
+        order_products: 注文内容
+      order_product:
+        product_id: 商品
+        quantity: 数量

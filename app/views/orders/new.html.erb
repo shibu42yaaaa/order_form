@@ -1,42 +1,105 @@
-<div class="container mt-3 mb-5">
-  <h1 class="text-center mb-5">注文フォーム</h1>
+<div class='container mt-3 mb-5'>
+  <h1 class='text-center mb-5'>注文フォーム</h1>
 
   <%= form_for @order, url: confirm_orders_path do |f| %>
-    <div class="col-md-6 mx-auto mb-5">
-      <div class="mb-3">
-        <!-- <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %> -->
-        <div>お名前</div>
+    <div class='col-md-6 mx-auto mb-5'>
+      <div class='mb-3'>
+        <%= f.label :name, class: 'form-label border-start border-primary border-4 ps-1' %>
         <%= f.text_field :name, size: 40, placeholder: 'サンプル太郎', class: 'form-control' %>
         <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :name } %>
       </div>
-    </div>
 
-    <div class="col-md-6 mx-auto mb-5">
-      <div class="mb-3">
+      <div class='mb-3'>
         <%= f.label :email, class: 'form-label border-start border-primary border-4 ps-1' %>
-        <%= f.text_field :email, size: 100, placeholder: 'sample@sample.com', class: 'form-control' %>
+        <%= f.text_field :email, size: 100, placeholder: 'sample@example.com', class: 'form-control' %>
         <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :email } %>
       </div>
-    </div>
 
-    <div class="col-md-6 mx-auto mb-5">
-      <div class="mb-3">
+      <div class='mb-3'>
         <%= f.label :telephone, class: 'form-label border-start border-primary border-4 ps-1' %>
         <%= f.text_field :telephone, size: 40, placeholder: '0312345678', class: 'form-control' %>
         <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :telephone } %>
       </div>
-    </div>
 
-    <div class="col-md-6 mx-auto mb-5">
-      <div class="mb-3">
+      <div class='mb-3'>
         <%= f.label :delivery_address, class: 'form-label border-start border-primary border-4 ps-1' %>
-        <%= f.text_field :delivery_address, size: 40, placeholder: 'お届け先の住所をご入力下さい', class: 'form-control' %>
+        <%= f.text_field :delivery_address, size: 40, placeholder: 'お届け先の住所をご入力ください。', class: 'form-control' %>
         <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :delivery_address } %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :payment_method_id, class: 'form-label border-start border-primary border-4 ps-1' %>
+        <%= f.select :payment_method_id, PaymentMethod.selectable_methods, { include_blank: true }, class: 'form-select' %>
+        <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :payment_method_id } %>
+      </div>
+
+      <!-- 子テーブル -->
+      <div class="mb-3">
+        <%= f.label :order_products, class: 'form-label border-start border-primary border-4 ps-1' %>
+        <%= f.fields_for :order_products do |pf| %>
+          <div class="border border-secondary border-1 rounded p-3 mb-3">
+            <div class="mb-3">
+              <%= pf.label :product_id, t('activerecord.attributes.order_product.product_id'), class: 'form-label border-start border-primary border-2 ps-1' %>
+              <!-- <%= pf.label :product_id, t('activerecord.attributes.order_product.product_id'), class: 'form-label border-start border-primary border-2 ps-1' %> -->
+              <%= pf.select :product_id, Product.selectable_products, { include_blank: true }, class: 'form-select' %>
+              <%= render partial: 'shared/error_messages', locals: { record: pf.object, symbol: :product_id } %>
+            </div>
+            <!-- 数量 -->
+            <div class="mb-3">
+              <%= pf.label :quantity, t('activerecord.attributes.order_product.quantity'), class: 'form-label border-start border-primary border-2 ps-1' %>
+              <%= pf.number_field :quantity, size: 4, placeholder: '数量', class: 'form-control' %>
+              <%= render partial: 'shared/error_messages', locals: { record: pf.object, symbol: :quantity } %>
+            </div>
+
+            <% if @order.order_products.size > 1 %>
+              <div class='d-grid d-md-flex justify-content-end'>
+                <%= f.button '削除', name: 'delete_product', value: pf.index, class: 'btn btn-danger'%>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @order.order_products.size < 3 %>
+          <%= f.button '商品を追加する', name: 'add_product', class: 'btn btn-primary'%>
+        <% end %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :other_comment, class: 'form-label border-start border-primary border-4 ps-1' %>
+        <%= f.text_area :other_comment, size: '60x6', placeholder: 'その他、ご要望がありましたらご入力ください。', class: 'form-control' %>
+        <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :other_comment } %>
+      </div>  
+
+      <div class="mb-3">
+        <%= f.label :direct_mail_enabled, class: 'form-label border-start border-primary border-4 ps-1' %>
+        <div class="mb-2 fs-6">*お得な情報満載のメールマガジンを配信しております。</div>
+        <div class='form-check form-check-inline'>
+          <label class='form-check-label'>
+            <%= f.radio_button :direct_mail_enabled, false, class: 'form-check-input' %>
+            配信は不要
+          </label>
+        </div>
+        <div class='form-check form-check-inline'>
+          <label class='form-check-label'>
+            <%= f.radio_button :direct_mail_enabled, true, class: 'form-check-input' %>
+            配信を希望する
+          </label>
+        </div>
+        <%= render partial: 'shared/error_messages', locals: { record: @order, symbol: :direct_mail_enabled } %>
+      </div>
+
+      <div class="mb-5">
+        <%= f.label :inflow_source_ids, class: 'form-label border-start border-primary border-4 ps-1' %>
+        <div class="mb-2">*このサイトをどこでお知りになりましたか？(複数選択可)</div>
+        <%= f.collection_check_boxes :inflow_source_ids, InflowSource.all, :id, :name do |inflow_source| %>
+          <div class='form-check form-check-inline'>
+            <%= inflow_source.label { inflow_source.check_box(class: 'form-check-input') + " #{inflow_source.text}" } %>
+          </div>
+        <% end %>
       </div>
     </div>
 
-    <div class="d-grid col-md-6 mx-auto">
-      <%= f.button '確認画面へ', class: 'btn btn-lg btn-primary' %>
+    <div class='d-grid col-md-6 mx-auto'>
+      <%= f.submit '確認画面へ', class: 'btn btn-lg btn-primary' %> 
     </div>
   <% end %>
 </div>

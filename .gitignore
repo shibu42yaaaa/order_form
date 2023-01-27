@@ -3,3 +3,4 @@ tmp/cache/bootsnap/compile-cache-iseq/
 log/
 tmp/cache/bootsnap/compile-cache-iseq/
 tmp/pids/
+log/development.log
