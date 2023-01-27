@@ -1,0 +1,26 @@
+<%- @order.name %>様
+
+この度はご注文いただき、誠にありがとうございます。
+
+以下のご注文内容に基づき、商品を発送させていただきます。
+到着まで今しばらくお待ちください。
+
+[注文内容]
+<% @order.order_products.each do |order_product| %>
+<%= t('activerecord.attributes.order_product.product_id') %>:<%= order_product.name_and_price_text%>
+<%= t('activerecord.attributes.order_product.quantity') %>:<%= order_product.quantity %>
+<% end %>
+合計金額: <%= number_to_currency(@order.total_price) %>(税込)
+
+<!--”確認事項記入” 支払い　住所　電話　コメント　ダイレクトメール -->
+<%= t('activerecord.attributes.order.payment_method_id') %>:<%= order.payment_method.name %>
+<%= t('activerecord.attributes.order.delivery_address') %>:<%= order.delivery_address %>
+<%= t('activerecord.attributes.order.telephone') %>:<%= order.telephone %>
+<%= t('activerecord.attributes.order.other_comment') %>:<%= order.other_comment %>
+<%= t('activerecord.attributes.order.direct_mail_enabled') %>:<%= order.direct_mail_enabled_text %>
+
+=====================================
+晴天堂書店
+http://localhost:3000
+メール： support@example.com
+=====================================

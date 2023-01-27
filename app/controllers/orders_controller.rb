@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
     return render :new if params[:button] == 'back'
     
     if @order.save
+      OrderMailer.mail_to_user(@order.id).deliver
       session[:order_id] = @order.id
       return redirect_to complete_orders_url 
     end
