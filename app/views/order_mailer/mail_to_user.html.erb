@@ -1,4 +1,4 @@
-<%- @order.name %>様<br>
+<%= @order.name %>様<br>
 <br>
 この度はご注文いただき、誠にありがとうございます。<br>
 <br>
@@ -12,11 +12,11 @@
 <% end %>
 合計金額: <%= number_to_currency(@order.total_price) %>(税込)<br>
 
-<%= t('activerecord.attributes.order.payment_method_id') %>:<%= order.payment_method.name %><br>
-<%= t('activerecord.attributes.order.delivery_address') %>:<%= order.delivery_address %><br>
-<%= t('activerecord.attributes.order.telephone') %>:<%= order.telephone %><br>
-<%= t('activerecord.attributes.order.other_comment') %>:<%= order.other_comment %><br>
-<%= t('activerecord.attributes.order.direct_mail_enabled') %>:<%= order.direct_mail_enabled_text %><br>
+<%= t('activerecord.attributes.order.payment_method_id') %>:<%= @order.payment_method.name %><br>
+<%= t('activerecord.attributes.order.delivery_address') %>:<%= @order.delivery_address %><br>
+<%= t('activerecord.attributes.order.telephone') %>:<%= @order.telephone %><br>
+<%= t('activerecord.attributes.order.other_comment') %>:<%= @order.other_comment %><br>
+<%= t('activerecord.attributes.order.direct_mail_enabled') %>:<%= @order.direct_mail_enabled_text %><br>
 
 =====================================<br>
 晴天堂書店<br>
