@@ -5609,3 +5609,277 @@ Processing by OrdersController#confirm as HTML
 Completed 200 OK in 99ms (Views: 85.0ms | ActiveRecord: 7.5ms | Allocations: 18220)
 
 
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-28 18:08:15 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 3.5ms | Allocations: 222)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (3.8ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 34)
+  [1m[36mProduct Load (4.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/models/product.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 34)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 35)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 35)
+  [1m[36mInflowSource Load (3.7ms)[0m  [1m[34mSELECT "inflow_sources".* FROM "inflow_sources"[0m
+  ↳ app/views/orders/new.html.erb:93
+  Rendered orders/new.html.erb within layouts/application (Duration: 1119.7ms | Allocations: 61228)
+  Rendered layout layouts/application.html.erb (Duration: 1592.5ms | Allocations: 82044)
+Completed 200 OK in 1859ms (Views: 1562.2ms | ActiveRecord: 72.6ms | Allocations: 101317)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-28 18:08:19 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 26)
+  Rendered shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 1.4ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (2.7ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  [1m[36mProduct Load (2.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/models/product.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  [1m[36mInflowSource Load (3.9ms)[0m  [1m[34mSELECT "inflow_sources".* FROM "inflow_sources"[0m
+  ↳ app/views/orders/new.html.erb:93
+  Rendered orders/new.html.erb within layouts/application (Duration: 80.6ms | Allocations: 11664)
+  Rendered layout layouts/application.html.erb (Duration: 96.5ms | Allocations: 12676)
+Completed 200 OK in 105ms (Views: 92.2ms | ActiveRecord: 9.2ms | Allocations: 13277)
+
+
+Started POST "/orders/confirm" for 172.28.0.1 at 2023-01-28 18:09:16 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#confirm as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"ミッキー", "email"=>"micky@sample.com", "telephone"=>"09000009999", "delivery_address"=>"千葉県夢の国", "payment_method_id"=>"2", "order_products_attributes"=>{"0"=>{"product_id"=>"1", "quantity"=>"1"}}, "other_comment"=>"ミッキーだよ", "direct_mail_enabled"=>"true", "inflow_source_ids"=>["", "3", "4"]}, "commit"=>"確認画面へ"}
+  [1m[36mInflowSource Load (3.8ms)[0m  [1m[34mSELECT "inflow_sources".* FROM "inflow_sources" WHERE "inflow_sources"."id" IN (?, ?)[0m  [["id", 3], ["id", 4]]
+  ↳ app/controllers/orders_controller.rb:8:in `confirm'
+  [1m[36mPaymentMethod Load (3.8ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:18:in `confirm'
+  [1m[36mProduct Load (2.9ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:18:in `confirm'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/confirm.html.erb within layouts/application
+  Rendered orders/confirm.html.erb within layouts/application (Duration: 51.1ms | Allocations: 4689)
+  Rendered layout layouts/application.html.erb (Duration: 66.2ms | Allocations: 5810)
+Completed 200 OK in 146ms (Views: 70.8ms | ActiveRecord: 16.0ms | Allocations: 18219)
+
+
+Started POST "/orders" for 172.28.0.1 at 2023-01-28 18:09:37 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "order"=>{"name"=>"ミッキー", "email"=>"micky@sample.com", "telephone"=>"09000009999", "delivery_address"=>"千葉県夢の国", "payment_method_id"=>"2", "other_comment"=>"ミッキーだよ", "direct_mail_enabled"=>"true", "inflow_source_ids"=>["3", "4"], "order_products_attributes"=>{"0"=>{"product_id"=>"1", "quantity"=>"1"}}}, "button"=>""}
+  [1m[36mInflowSource Load (2.9ms)[0m  [1m[34mSELECT "inflow_sources".* FROM "inflow_sources" WHERE "inflow_sources"."id" IN (?, ?)[0m  [["id", 3], ["id", 4]]
+  ↳ app/controllers/orders_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+  [1m[36mPaymentMethod Load (3.5ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+  [1m[36mProduct Load (0.7ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+  [1m[36mOrder Create (28.7ms)[0m  [1m[32mINSERT INTO "orders" ("name", "created_at", "updated_at", "email", "telephone", "delivery_address", "payment_method_id", "other_comment", "direct_mail_enabled") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "ミッキー"], ["created_at", "2023-01-28 18:09:37.823242"], ["updated_at", "2023-01-28 18:09:37.823242"], ["email", "micky@sample.com"], ["telephone", "09000009999"], ["delivery_address", "千葉県夢の国"], ["payment_method_id", 2], ["other_comment", "ミッキーだよ"], ["direct_mail_enabled", 1]]
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+  [1m[36mOrderInflowSource Create (17.5ms)[0m  [1m[32mINSERT INTO "order_inflow_sources" ("name", "order_id", "inflow_source_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", nil], ["order_id", 7], ["inflow_source_id", 3], ["created_at", "2023-01-28 18:09:37.860912"], ["updated_at", "2023-01-28 18:09:37.860912"]]
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+  [1m[36mOrderInflowSource Create (0.2ms)[0m  [1m[32mINSERT INTO "order_inflow_sources" ("name", "order_id", "inflow_source_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", nil], ["order_id", 7], ["inflow_source_id", 4], ["created_at", "2023-01-28 18:09:37.883955"], ["updated_at", "2023-01-28 18:09:37.883955"]]
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+  [1m[36mOrderProduct Create (11.0ms)[0m  [1m[32mINSERT INTO "order_products" ("order_id", "product_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["order_id", 7], ["product_id", 1], ["quantity", 1], ["created_at", "2023-01-28 18:09:37.889689"], ["updated_at", "2023-01-28 18:09:37.889689"]]
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+  [1m[36mTRANSACTION (18.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/orders_controller.rb:25:in `create'
+[ActiveJob] Enqueued OrderMailerJob (Job ID: 1c0e6738-dd12-4d70-bb92-13567384dd40) to Sidekiq(default) with arguments: 7
+Redirected to http://localhost:3000/orders/complete
+Completed 302 Found in 197ms (ActiveRecord: 83.0ms | Allocations: 13346)
+
+
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-28 18:09:37 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (9.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:35:in `complete'
+  Rendering layout layouts/application.html.erb
+  Rendering orders/complete.html.erb within layouts/application
+  Rendered orders/complete.html.erb within layouts/application (Duration: 7.0ms | Allocations: 182)
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | Allocations: 1309)
+Completed 200 OK in 54ms (Views: 29.4ms | ActiveRecord: 9.3ms | Allocations: 3661)
+
+
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40] Performing OrderMailerJob (Job ID: 1c0e6738-dd12-4d70-bb92-13567384dd40) from Sidekiq(default) enqueued at 2023-01-28T09:09:37Z with arguments: 7
+Started GET "/orders/complete" for 172.28.0.1 at 2023-01-28 18:09:54 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#complete as HTML
+  [1m[36mOrder Load (2.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/orders_controller.rb:35:in `complete'
+Redirected to http://localhost:3000/orders/new
+Completed 302 Found in 13ms (ActiveRecord: 2.7ms | Allocations: 1398)
+
+
+Started GET "/orders/new" for 172.28.0.1 at 2023-01-28 18:09:54 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by OrdersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering orders/new.html.erb within layouts/application
+  Rendered shared/_error_messages.html.erb (Duration: 0.3ms | Allocations: 26)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mPaymentMethod Load (3.6ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods"[0m
+  ↳ app/models/payment_method.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  [1m[36mProduct Load (2.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/models/product.rb:4:in `map'
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 23)
+  Rendered shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 23)
+  [1m[36mInflowSource Load (3.6ms)[0m  [1m[34mSELECT "inflow_sources".* FROM "inflow_sources"[0m
+  ↳ app/views/orders/new.html.erb:93
+  Rendered orders/new.html.erb within layouts/application (Duration: 82.6ms | Allocations: 11655)
+  Rendered layout layouts/application.html.erb (Duration: 96.0ms | Allocations: 12675)
+Completed 200 OK in 103ms (Views: 89.6ms | ActiveRecord: 9.7ms | Allocations: 13212)
+
+
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   [1m[35m (2.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   ↳ app/mailers/order_mailer.rb:3:in `mail_to_user'
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   [1m[36mOrder Load (5.1ms)[0m  [1m[34mSELECT "orders".* FROM "orders" WHERE "orders"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   ↳ app/mailers/order_mailer.rb:3:in `mail_to_user'
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendering layout layouts/mailer.html.erb
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendering order_mailer/mail_to_user.html.erb within layouts/mailer
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   [1m[36mOrderProduct Load (4.6ms)[0m  [1m[34mSELECT "order_products".* FROM "order_products" WHERE "order_products"."order_id" = ?[0m  [["order_id", 7]]
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   ↳ app/views/order_mailer/mail_to_user.html.erb:9
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   [1m[36mProduct Load (6.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   ↳ app/models/order_product.rb:8:in `name_and_price_text'
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   [1m[36mPaymentMethod Load (5.5ms)[0m  [1m[34mSELECT "payment_methods".* FROM "payment_methods" WHERE "payment_methods"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   ↳ app/views/order_mailer/mail_to_user.html.erb:15
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendered order_mailer/mail_to_user.html.erb within layouts/mailer (Duration: 160.0ms | Allocations: 19428)
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendered layout layouts/mailer.html.erb (Duration: 169.9ms | Allocations: 19701)
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendering layout layouts/mailer.text.erb
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendering order_mailer/mail_to_user.text.erb within layouts/mailer
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendered order_mailer/mail_to_user.text.erb within layouts/mailer (Duration: 6.4ms | Allocations: 1149)
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40]   Rendered layout layouts/mailer.text.erb (Duration: 14.1ms | Allocations: 1340)
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40] OrderMailer#mail_to_user: processed outbound mail in 575.8ms
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40] Delivered mail 63d4e6722c362_b3d90-33d@e500451f9a74.mail (397.7ms)
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40] Date: Sat, 28 Jan 2023 18:10:10 +0900
+From: support@example.com
+To: micky@sample.com
+Message-ID: <63d4e6722c362_b3d90-33d@e500451f9a74.mail>
+Subject: =?UTF-8?Q?=E3=81=94=E6=B3=A8=E6=96=87=E3=81=82=E3=82=8A=E3=81=8C=E3=81=A8=E3=81=86=E3=81=94=E3=81=96=E3=81=84=E3=81=BE=E3=81=99=E3=80=82?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_63d4e67220d88_b3d90-4be";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_63d4e67220d88_b3d90-4be
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+44Of44OD44Kt44O85qeYDQoNCuOBk+OBruW6puOBr+OBlOazqOaWh+OBhOOB
+n+OBoOOBjeOAgeiqoOOBq+OBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOB
+meOAgg0KDQrku6XkuIvjga7jgZTms6jmloflhoXlrrnjgavln7rjgaXjgY3j
+gIHllYblk4HjgpLnmbrpgIHjgZXjgZvjgabjgYTjgZ/jgaDjgY3jgb7jgZnj
+gIINCuWIsOedgOOBvuOBp+S7iuOBl+OBsOOCieOBj+OBiuW+heOBoeOBj+OB
+oOOBleOBhOOAgg0KDQpb5rOo5paH5YaF5a65XQ0K5ZWG5ZOBOuODr+ODs+OD
+lOODvOOCuSg0MDDlhoYv5YCLKQ0K5pWw6YePOjENCuWQiOioiOmHkemhjTog
+NDQw5YaGKOeojui+vCkNCg0K5pSv5omV44GE5pa55rOVOumKgOihjOaMr+i+
+vA0K44GK5bGK44GR5YWI5L2P5omAOuWNg+iRieecjOWkouOBruWbvQ0K6Zu7
+6Kmx55Wq5Y+3OjA5MDAwMDA5OTk5DQrjgZ3jga7ku5bjg7vjgZTopoHmnJs6
+44Of44OD44Kt44O844Gg44KIDQrjg6Hjg7zjg6vjg57jgqzjgrjjg7Pjga7p
+hY3kv6E66YWN5L+h44KS5biM5pyb44GZ44KLDQoNCj09PT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT0NCuaZtOWkqeWgguabuOW6lw0KaHR0
+cDovL2xvY2FsaG9zdDozMDAwDQrjg6Hjg7zjg6vvvJogc3VwcG9ydEBleGFt
+cGxlLmNvbQ0KPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09
+PQ0KDQo=
+
+----==_mimepart_63d4e67220d88_b3d90-4be
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+DQo8aHRtbD4NCiAgPGhlYWQ+DQogICAgPG1ldGEg
+aHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7
+IGNoYXJzZXQ9dXRmLTgiIC8+DQogICAgPHN0eWxlPg0KICAgICAgLyogRW1h
+aWwgc3R5bGVzIG5lZWQgdG8gYmUgaW5saW5lICovDQogICAgPC9zdHlsZT4N
+CiAgPC9oZWFkPg0KDQogIDxib2R5Pg0KICAgIOODn+ODg+OCreODvOanmDxi
+cj4NCjxicj4NCuOBk+OBruW6puOBr+OBlOazqOaWh+OBhOOBn+OBoOOBjeOA
+geiqoOOBq+OBguOCiuOBjOOBqOOBhuOBlOOBluOBhOOBvuOBmeOAgjxicj4N
+Cjxicj4NCuS7peS4i+OBruOBlOazqOaWh+WGheWuueOBq+WfuuOBpeOBjeOA
+geWVhuWTgeOCkueZuumAgeOBleOBm+OBpuOBhOOBn+OBoOOBjeOBvuOBmeOA
+gjxicj4NCuWIsOedgOOBvuOBp+S7iuOBl+OBsOOCieOBj+OBiuW+heOBoeOB
+j+OBoOOBleOBhOOAgjxicj4NCjxicj4NClvms6jmloflhoXlrrldPGJyPg0K
+5ZWG5ZOBOuODr+ODs+ODlOODvOOCuSg0MDDlhoYv5YCLKTxicj4NCuaVsOmH
+jzoxPGJyPg0K5ZCI6KiI6YeR6aGNOiA0NDDlhoYo56iO6L68KTxicj4NCg0K
+5pSv5omV44GE5pa55rOVOumKgOihjOaMr+i+vDxicj4NCuOBiuWxiuOBkeWF
+iOS9j+aJgDrljYPokYnnnIzlpKLjga7lm708YnI+DQrpm7voqbHnlarlj7c6
+MDkwMDAwMDk5OTk8YnI+DQrjgZ3jga7ku5bjg7vjgZTopoHmnJs644Of44OD
+44Kt44O844Gg44KIPGJyPg0K44Oh44O844Or44Oe44Ks44K444Oz44Gu6YWN
+5L+hOumFjeS/oeOCkuW4jOacm+OBmeOCizxicj4NCg0KPT09PT09PT09PT09
+PT09PT09PT09PT09PT09PT09PT09PT09PTxicj4NCuaZtOWkqeWgguabuOW6
+lzxicj4NCjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCI+aHR0cDov
+L2xvY2FsaG9zdDozMDAwPC9hPjxicj4NCuODoeODvOODq++8mjxhIGhyZWY9
+InN1cHBvcnRAZXhhbXBsZS5jb20iPnN1cHBvcnRAZXhhbXBsZS5jb208L2E+
+IDxicj4NCj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT08
+YnI+DQo8YnI+DQogIDwvYm9keT4NCjwvaHRtbD4NCg==
+
+----==_mimepart_63d4e67220d88_b3d90-4be--
+
+[ActiveJob] [OrderMailerJob] [1c0e6738-dd12-4d70-bb92-13567384dd40] Performed OrderMailerJob (Job ID: 1c0e6738-dd12-4d70-bb92-13567384dd40) from Sidekiq(default) in 31900.23ms
+Started GET "/sidekiq" for 172.28.0.1 at 2023-01-28 18:13:18 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stylesheets/bootstrap.css" for 172.28.0.1 at 2023-01-28 18:13:18 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/javascripts/dashboard.js" for 172.28.0.1 at 2023-01-28 18:13:18 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/javascripts/application.js" for 172.28.0.1 at 2023-01-28 18:13:18 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stylesheets/application.css" for 172.28.0.1 at 2023-01-28 18:13:18 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stylesheets/application-dark.css" for 172.28.0.1 at 2023-01-28 18:13:19 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/images/status.png" for 172.28.0.1 at 2023-01-28 18:13:19 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/images/favicon.ico" for 172.28.0.1 at 2023-01-28 18:13:19 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:13:24 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:13:31 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:13:38 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:13:45 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:13:52 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:13:59 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:14:06 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:14:13 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:14:20 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:14:27 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:14:34 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:14:41 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/stats" for 172.28.0.1 at 2023-01-28 18:14:48 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Started GET "/sidekiq/busy" for 172.28.0.1 at 2023-01-28 18:14:51 +0900
+Cannot render console from 172.28.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
